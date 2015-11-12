@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<h1>To Do List</h1>
+						<div class="row">
+							<div class="col-md-6">
+								<form  id="create-todos">
+									<div class="form-group">
+										<input type="text" class="form-control" name="task" placeholder="Task">
+									</div>
+									<div class="form-group">
+										<textarea class="form-control" name="description" rows="3" placeholder="Description"></textarea>
+									</div>
+									<input type="submit" class="btn btn-warning">
+								</form>
+							</div>
+							<div class="col-md-6">
+							</div>
+						</div>
+					<br>
+					<div id="todos-list">
+						<script id="todos-template" type="text/x-handlebars-template">
+							\{{#each todos}}
+							<div class="row">
+								<div class="col-xs-4">
+									<h4>\{{task}}</h4>
+								</div>
+								<div class="col-xs-6">
+									<h4>\{{description}}</h4>
+								</div>
+								<div class="col-xs-2">
+									<button type="button" class="btn btn-default edit" data-id="\{{_id}}">
+										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true" id="delete"></span>
+									</button>
+								</div>
+							</div>
+
+							<div class="row">
+								<form>
+									<div class="col-xs-4">
+										<div class="form-group" id="form\{{_id}}">
+											<input type="text" class="form-control" name="task" placeholder="Task" style="display: none">
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<div class="form-group" >
+											<textarea class="form-control" name="description" rows="2" style="display: none" style="display: none" placeholder="Description"></textarea>
+										</div>
+									</div>
+									<div class="col-xs-2">
+										<br><br>
+										<input type="submit" class="btn btn-warning" style="display: none">
+									</div>
+								</form>
+							</div>
+							<hr>
+							\{{/each}}
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- jquery -->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		
+		<!-- bootstrap js -->
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!-- handlebars -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+		
+		<!-- custom script -->
+		<script type="text/javascript" src="script.js"></script> <!-- change file name -->
+	</body>
+</html>
