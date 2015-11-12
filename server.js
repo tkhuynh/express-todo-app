@@ -62,6 +62,20 @@ app.post("/api/todos", function (req, res) {
 	res.json(newTodo);
 });
 
+//edit todo
+app.put("/api/todos/:id", function (req, res) {
+  var todoId = parseInt(req.params.id);
+
+  var todoToUpdate = todos.filter(function (todo) {
+    return todo._id == todoId;
+  })[0];
+
+  todoToUpdate.task = req.body.task;
+  todoToUpdate.description = req.body.description;
+
+  res.json(todoToUpdate);
+});
+
 
 
 //listen to port 3000
