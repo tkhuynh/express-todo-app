@@ -76,7 +76,18 @@ app.put("/api/todos/:id", function (req, res) {
   res.json(todoToUpdate);
 });
 
+ //delete todo
+app.delete('/api/todos/:id', function (req, res) {
+  var todoId = parseInt(req.params.id);
 
+  var todoToDelete = todos.filter(function (todo) {
+    return todo._id == todoId;
+  })[0];
+
+  todos.splice(todos.indexOf(todoToDelete), 1);
+
+  res.json(todoToDelete);
+});
 
 //listen to port 3000
 var server = app.listen(process.env.PORT || 3000, function () {
