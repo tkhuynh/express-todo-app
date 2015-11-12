@@ -46,7 +46,7 @@
 									<h4>\{{description}}</h4>
 								</div>
 								<div class="col-xs-2">
-									<button type="button" class="btn btn-default edit" data-id="\{{_id}}">
+									<button type="button" class="btn btn-default edit" id="\{{_id}}">
 										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 									</button>
 									<button type="button" class="btn btn-default">
@@ -55,20 +55,19 @@
 								</div>
 							</div>
 
-							<div class="row"  style="display: none">
+							<div class="row"  id="row\{{_id}}" style="display: none">
 								<form>
 									<div class="col-xs-4">
-										<div class="form-group" id="form\{{_id}}">
+										<div class="form-group">
 											<input type="text" class="form-control" name="task" placeholder="Task">
 										</div>
 									</div>
 									<div class="col-xs-6">
 										<div class="form-group" >
-											<textarea class="form-control" name="description" rows="2" style="display: none" placeholder="Description"></textarea>
+											<textarea class="form-control" name="description" rows="2" placeholder="Description"></textarea>
 										</div>
 									</div>
 									<div class="col-xs-2">
-										<br><br>
 										<input type="submit" class="btn btn-warning">
 									</div>
 								</form>

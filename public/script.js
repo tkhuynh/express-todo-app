@@ -28,4 +28,9 @@ $(function() {
 			render();
 		});
 	});
+
+	$("#todos-list").on("click", $(".edit"), function(event) {
+		var id = $(".edit").attr("id");
+		$("#row" + id).toggle();
+	});
 });
