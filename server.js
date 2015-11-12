@@ -41,6 +41,16 @@ app.get("/api/todos", function (req, res) {
 	res.json(todos);
 });
 
+//get a todo by its Id
+app.get("/api/todos/:id", function (req, res) {
+	var todoId = parseInt(req.params.id);
+	var foundTodo = todos.filter(function (todo) {
+		return todo._id === todoId;
+	});
+	res.json(foundTodo);
+});
+
+
 
 
 //listen to port 3000
