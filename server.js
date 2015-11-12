@@ -50,6 +50,17 @@ app.get("/api/todos/:id", function (req, res) {
 	res.json(foundTodo);
 });
 
+//create new one
+app.post("/api/todos", function (req, res) {
+	var newTodo = req.body;
+	if (todos.length > 0) {
+		newTodo._id = todos[todos.length - 1]._id + 1;
+	} else {
+		newTodo._id = 1;
+	}
+	todos.push(newTodo);
+	res.json(newTodo);
+});
 
 
 
