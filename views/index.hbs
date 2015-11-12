@@ -3,6 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:700' rel='stylesheet' type='text/css'>
+
 		<link rel="stylesheet" href="style.css">
 		<title>Document</title>
 	</head>
@@ -10,7 +15,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h1>To Do List</h1>
+					<div class="title-holder">
+						<h1>To Do List</h1>
+					</div>
 						<div class="row">
 							<div class="col-md-6">
 								<form  id="create-todos">
@@ -24,6 +31,7 @@
 								</form>
 							</div>
 							<div class="col-md-6">
+								<img src="http://www.girlfridayproductions.com/wordpress/wp-content/themes/girlfriday/assets/img/icons/icon-pencilpaper.png">
 							</div>
 						</div>
 					<br>
@@ -47,21 +55,21 @@
 								</div>
 							</div>
 
-							<div class="row">
+							<div class="row"  style="display: none">
 								<form>
 									<div class="col-xs-4">
 										<div class="form-group" id="form\{{_id}}">
-											<input type="text" class="form-control" name="task" placeholder="Task" style="display: none">
+											<input type="text" class="form-control" name="task" placeholder="Task">
 										</div>
 									</div>
 									<div class="col-xs-6">
 										<div class="form-group" >
-											<textarea class="form-control" name="description" rows="2" style="display: none" style="display: none" placeholder="Description"></textarea>
+											<textarea class="form-control" name="description" rows="2" style="display: none" placeholder="Description"></textarea>
 										</div>
 									</div>
 									<div class="col-xs-2">
 										<br><br>
-										<input type="submit" class="btn btn-warning" style="display: none">
+										<input type="submit" class="btn btn-warning">
 									</div>
 								</form>
 							</div>

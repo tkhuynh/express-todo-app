@@ -19,7 +19,6 @@ $(function() {
 	$("#create-todos").on("submit", function(event) {
 		event.preventDefault();
 		var newTodo = $(this).serialize();
-		console.log(newTodo);
 		if(allTodos.length > 0) {
 			newTodo._id = allTodos[allTodos.length - 1]._id + 1;
 		}
