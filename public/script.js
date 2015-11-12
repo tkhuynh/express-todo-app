@@ -29,12 +29,13 @@ $(function() {
 		});
 	});
 
-	// //still working on
+	// 
+//still working on
 	// $("#todos-list").on("click", $(".edit"), function(event) {
 	// 	event.preventDefault();
 	// 	var id = $(".edit").attr("id");
 	// 	var $editForm = $("#form" + id);
-	// 	$editForm.show();
+	// 	$editForm.toggle();
 	// 	var toBeEdit = allTodos.filter(function (todo) {
 	// 		return todo._id == id;
 	// 	});
@@ -45,15 +46,13 @@ $(function() {
 	// 		console.log("DSD");
 	// 	});
 	// });
-
 	$("#todos-list").on("click", $("#delete"), function(event) {
 		event.preventDefault();
 		var id = $(".edit").attr("id");
 		var toBeDeleted = allTodos.filter(function (todo) {
 			return todo._id == id;
-		});
+		})[0];
 		var toBeDeletedIndex = allTodos.indexOf(toBeDeleted);
-		console.log(toBeDeleted);
 		$.ajax({
 			type: "DELETE",
 			url: baseUrl + "/" + id,
