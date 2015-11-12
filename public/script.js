@@ -29,8 +29,38 @@ $(function() {
 		});
 	});
 
-	$("#todos-list").on("click", $(".edit"), function(event) {
+	// //still working on
+	// $("#todos-list").on("click", $(".edit"), function(event) {
+	// 	event.preventDefault();
+	// 	var id = $(".edit").attr("id");
+	// 	var $editForm = $("#form" + id);
+	// 	$editForm.show();
+	// 	var toBeEdit = allTodos.filter(function (todo) {
+	// 		return todo._id == id;
+	// 	});
+	// 	var toBeEditIndex = allTodos.indexOf(toBeEdit);
+	// 	$("#todos-list").on("click", $("#save"), function(event) {
+	// 		var edited = $editForm.serialize();
+	// 		document.getElementById("form" + id).reset();
+	// 		console.log("DSD");
+	// 	});
+	// });
+
+	$("#todos-list").on("click", $("#delete"), function(event) {
+		event.preventDefault();
 		var id = $(".edit").attr("id");
-		$("#row" + id).toggle();
+		var toBeDeleted = allTodos.filter(function (todo) {
+			return todo._id == id;
+		});
+		var toBeDeletedIndex = allTodos.indexOf(toBeDeleted);
+		console.log(toBeDeleted);
+		$.ajax({
+			type: "DELETE",
+			url: baseUrl + "/" + id,
+			success: function (data) {
+				allTodos.splice(toBeDeletedIndex, 1);
+				render();
+			}
+		});
 	});
 });
