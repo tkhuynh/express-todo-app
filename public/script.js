@@ -6,9 +6,9 @@ $(function() {
 	var template = Handlebars.compile(source);
 	var render = function() {
 		$toDoList.empty();
-		var todosHtml = template({
-			todos: allTodos
-		});
+		var todosHtml = template({ todos: allTodos});
+		//use find to target child element in form
+		$("form").find("input[name='task'], textarea").val("");
 		$toDoList.append(todosHtml);
 	};
 	$.get(baseUrl, function(data) {
@@ -18,10 +18,6 @@ $(function() {
 	$("#create-todos").on("submit", function(event) {
 		event.preventDefault();
 		var newTodo = $(this).serialize();
-		if (allTodos.length > 0) {
-			newTodo._id = allTodos[allTodos.length - 1]._id + 1;
-		}
-		$("#create-todos").find("input[name='task'], textarea").val("");
 		$.post(baseUrl, newTodo, function(data) {
 			allTodos.push(data);
 			render();
@@ -41,8 +37,6 @@ $(function() {
 			event.preventDefault();
 			var editedTodo = $editForm.serialize();
 			console.log(editedTodo);
-			//http://www.w3schools.com/jquery/traversing_find.asp find child element(s)
-			$("#form" + ID).find("input[name='task'], textarea").val("");
 			$.ajax({
 				type: "PUT",
 				url: baseUrl + "/" + ID,
@@ -50,6 +44,7 @@ $(function() {
 				success: function(data) {
 					allTodos.splice(todoToBeEditedIndex, 1, data);
 					render();
+					console.log(allTodos);
 				}
 			});
 		});

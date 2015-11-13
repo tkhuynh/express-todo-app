@@ -17,3 +17,8 @@ h4 {
 .edit-form {
 	display: none;
 }
+.button-holder {
+	margin-bottom:  30px;
+	display: inline;
+	float: right;
+}

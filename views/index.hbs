@@ -35,20 +35,12 @@
 					<div id="todos-list">
 						<script id="todos-template" type="text/x-handlebars-template">
 							\{{#each todos}}
-							<div class="row">
+								<div class="row">
 									<div class="col-xs-4">
 										<h4>\{{task}}</h4>
 									</div>
-									<div class="col-xs-8">
+									<div class="col-xs-6">
 										<h4>\{{description}}</h4>
-										<button type="button" class="btn btn-default edit-button" aria-label="Left Align" id="\{{_id}}">
-											<span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true">
-											</span>
-										</button>
-										<button type="button" class="btn btn-default delete-button" aria-label="Left Align" id="del\{{_id}}">
-											<span class="glyphicon glyphicon-remove-circle glyphicon-align-left" aria-hidden="true">
-											</span>
-										</button>
 										<form role="form" class="edit-form" id="form\{{_id}}">
 											<div class="form-group">
 												<input type="text" class="form-control" name="task" placeholder="Task">
@@ -59,12 +51,20 @@
 											<div class="form-group">
 												<input type="submit" class="btn btn-warning" id="save" value = "Edit">
 											</div>
-									</form>
-								</div>
-											
+										</form>
 									</div>
-							</div>
-							<hr>
+									<div class="col-xs-2">	
+										<button type="button" class="btn btn-default edit-button" aria-label="Left Align" id="\{{_id}}">
+											<span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true">
+											</span>
+										</button>
+										<button type="button" class="btn btn-default delete-button" aria-label="Left Align" id="del\{{_id}}">
+											<span class="glyphicon glyphicon-remove-circle glyphicon-align-left" aria-hidden="true">
+											</span>
+										</button>
+									</div>	
+								</div>
+								<hr>
 							\{{/each}}
 						</script>
 					</div>

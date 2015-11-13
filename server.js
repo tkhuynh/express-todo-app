@@ -78,6 +78,7 @@ app.post("/api/todos", function(req, res) {
 });
 
 /// update todo
+// update todo
 app.put('/api/todos/:id', function(req, res) {
 	// get todo id from url params (`req.params`)
 	var todoId = req.params.id;
