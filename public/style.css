@@ -18,7 +18,7 @@ img {
 .done {
 	text-decoration: line-through;
 }
-h4, .task {
+h4, .task-name {
 	padding: 0px 5px 0px 5px;
 	font-size: 25px;
 	font-family: 'Indie Flower', cursive;

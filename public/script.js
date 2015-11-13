@@ -67,10 +67,7 @@ $(function() {
 			}
 		});
 	});
-	var checkCount = 0;
 	$("#todos-list").on("change", ".check", function (event) {
-		var tempCount = checkCount;
-		tempCount++;
 		var ID = $(this).attr("id").slice(7);
 		var doneTodo = "#row" + ID + " h4," + "#row" + ID + " .task";
 		var editButton = "#row" + ID + " .edit-button";

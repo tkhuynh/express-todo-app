@@ -41,14 +41,11 @@
 							\{{#each todos}}
 								<div class="row" id="row\{{_id}}">
 									<div class="col-xs-5 task-column">
-										\{{#if task}}
-											<label class="task">
-												<input type="checkbox" class="check" id="checked\{{_id}}"> \{{task}}
-											</label>
-										\{{else}}
-											<label class="task">
-												<input type="checkbox" class="check" id="checked\{{_id}}"> Unnamed Task</label>
-											</label>
+										<input type="checkbox" class="check" id="checked\{{_id}}"> 
+										\{{#if task}}	
+											<span class="task-name">\{{task}}</span>
+										\{{else}} 
+											<span class="task-name">Unnamed Task</span>
 										\{{/if}}
 									</div>
 									<div class="col-xs-5">
