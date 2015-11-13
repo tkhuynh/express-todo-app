@@ -6,11 +6,20 @@ h1 {
 	font-size: 60px;
 	font-family: 'Noto Serif', serif;
 	margin-bottom: 15px;
+	clear: :both;
 }
 img {
-	width: 130px;
+	float: left;
+	width: 60px;
 }
-h4 {
+.task-column {
+	border-right: 1px solid #EEEEEE
+}
+.done {
+	text-decoration: line-through;
+}
+h4, .task {
+	padding: 0px 5px 0px 5px;
 	font-size: 25px;
 	font-family: 'Indie Flower', cursive;
 }
@@ -21,4 +30,16 @@ h4 {
 	margin-bottom:  30px;
 	display: inline;
 	float: right;
+}
+
+@media (max-width: 500px) {
+	h1 {
+		font-size: 45px;
+	}
+	img {
+		width: 45px;
+	}
+  h4 {
+    font-size: 15px:;
+  }
 }
