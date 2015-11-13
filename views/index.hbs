@@ -3,11 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
 		<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
-
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif:700' rel='stylesheet' type='text/css'>
-
 		<link rel="stylesheet" href="style.css">
 		<title>Document</title>
 	</head>
@@ -18,52 +15,53 @@
 					<div class="title-holder">
 						<h1>To Do List</h1>
 					</div>
-						<div class="row">
-							<div class="col-md-6">
-								<form  id="create-todos">
-									<div class="form-group">
-										<input type="text" class="form-control" name="task" placeholder="Task">
-									</div>
-									<div class="form-group">
-										<textarea class="form-control" name="description" rows="3" placeholder="Description"></textarea>
-									</div>
-									<input type="submit" class="btn btn-warning">
-								</form>
-							</div>
-							<div class="col-md-6">
-								<img src="http://www.girlfridayproductions.com/wordpress/wp-content/themes/girlfriday/assets/img/icons/icon-pencilpaper.png">
-							</div>
+					<div class="row">
+						<div class="col-md-6">
+							<form  id="create-todos">
+								<div class="form-group">
+									<input type="text" class="form-control" name="task" placeholder="Task">
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" name="description" rows="3" placeholder="Description"></textarea>
+								</div>
+								<input type="submit" class="btn btn-warning">
+							</form>
 						</div>
+						<div class="col-md-6">
+							<img src="http://www.girlfridayproductions.com/wordpress/wp-content/themes/girlfriday/assets/img/icons/icon-pencilpaper.png">
+						</div>
+					</div>
 					<br>
 					<div id="todos-list">
 						<script id="todos-template" type="text/x-handlebars-template">
 							\{{#each todos}}
 							<div class="row">
-								<div class="col-xs-4">
-									<h4>\{{task}}</h4>
-								</div>
-								<div class="col-xs-6">
-									<h4>\{{description}}</h4>
-									<form role="form" class="edit-form" id="form\{{_id}}">
-										<div class="form-group" hidden>
-											<input type="text" class="form-control" name="task" placeholder="Task">
-										</div>
-										<div class="form-group">
-											<textarea class="form-control" name="description" rows="3" placeholder="Description"></textarea>
-										</div>
-										<div class="form-group">
-											<input type="submit" class="btn btn-warning" id="save" value = "Edit">
-										</div>
+									<div class="col-xs-4">
+											<h4>\{{task}}</h4>
+									</div>
+									<div class="col-xs-8">
+										<h4>\{{description}}</h4>
+										<div class="edit-holder">
+										<button type="button" class="btn btn-default edit-button" aria-label="Left Align" id="\{{_id}}">
+											<span class="glyphicon glyphicon-edit glyphicon-align-left" aria-hidden="true"></span> Edit
+										</button>
+										<button type="button" class="btn btn-default" aria-label="Left Align" id="delete">
+										<span class="glyphicon glyphicon-remove-circle glyphicon-align-left" aria-hidden="true"></span> Remove
+										</button>
+										<form role="form" class="edit-form" id="form\{{_id}}">
+											<div class="form-group">
+												<input type="text" class="form-control" name="task" placeholder="Task">
+											</div>
+											<div class="form-group">
+												<textarea class="form-control" name="description" rows="3" placeholder="Description"></textarea>
+											</div>
+											<div class="form-group">
+												<input type="submit" class="btn btn-warning" id="save" value = "Edit">
+											</div>
 									</form>
 								</div>
-								<div class="col-xs-2">
-									<button type="button" class="btn btn-default edit" id="\{{_id}}">
-										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-									</button>
-									<button type="button" class="btn btn-default" id="delete">
-										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									</button>
-								</div>
+											
+									</div>
 							</div>
 							<hr>
 							\{{/each}}

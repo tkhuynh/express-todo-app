@@ -2,24 +2,23 @@ $(function() {
 	var baseUrl = "/api/todos";
 	var allTodos = [];
 	var $toDoList = $("#todos-list");
-
 	var source = $("#todos-template").html();
 	var template = Handlebars.compile(source);
-
-	var render = function () {
+	var render = function() {
 		$toDoList.empty();
-		var todosHtml = template({todos: allTodos});
+		var todosHtml = template({
+			todos: allTodos
+		});
 		$toDoList.append(todosHtml);
 	};
-
-	$.get(baseUrl, function (data) {
-		allTodos = data;
+	$.get(baseUrl, function(data) {
+		allTodos = data.todos;
 		render();
 	});
 	$("#create-todos").on("submit", function(event) {
 		event.preventDefault();
 		var newTodo = $(this).serialize();
-		if(allTodos.length > 0) {
+		if (allTodos.length > 0) {
 			newTodo._id = allTodos[allTodos.length - 1]._id + 1;
 		}
 		document.getElementById("create-todos").reset();
@@ -29,37 +28,31 @@ $(function() {
 		});
 	});
 
-	// 
-//still working on
-	// $("#todos-list").on("click", $(".edit"), function(event) {
-	// 	event.preventDefault();
-	// 	var id = $(".edit").attr("id");
-	// 	var $editForm = $("#form" + id);
-	// 	$editForm.toggle();
-	// 	var toBeEdit = allTodos.filter(function (todo) {
-	// 		return todo._id == id;
-	// 	});
-	// 	var toBeEditIndex = allTodos.indexOf(toBeEdit);
-	// 	$("#todos-list").on("click", $("#save"), function(event) {
-	// 		var edited = $editForm.serialize();
-	// 		document.getElementById("form" + id).reset();
-	// 		console.log("DSD");
-	// 	});
-	// });
-	$("#todos-list").on("click", $("#delete"), function(event) {
-		event.preventDefault();
-		var id = $(".edit").attr("id");
-		var toBeDeleted = allTodos.filter(function (todo) {
-			return todo._id == id;
+	$("#todos-list").on("click", ".edit-button", function() {
+		var ID = $(this).attr("id");
+		var todoToBeEdited = allTodos.filter(function(todo) {
+			return todo._id == ID;
 		})[0];
-		var toBeDeletedIndex = allTodos.indexOf(toBeDeleted);
-		$.ajax({
-			type: "DELETE",
-			url: baseUrl + "/" + id,
-			success: function (data) {
-				allTodos.splice(toBeDeletedIndex, 1);
-				render();
-			}
+		var todoToBeEditedIndex = allTodos.indexOf(todoToBeEdited);
+		var $editForm = $("#form" + ID);
+		$editForm.toggle();
+		$("#todos-list").on("submit", $editForm, function(event) {
+			event.preventDefault();
+			var editedTodo = $editForm.serialize();
+			document.getElementById("form" + ID).reset();
+			$.ajax({
+				type: "PUT",
+				url: baseUrl + "/" + ID,
+				data: editedTodo,
+				success: function(data) {
+					allTodos.splice(todoToBeEditedIndex, 1, data);
+					render();
+				}
+			});
 		});
+	});
+
+	$("#todos-list").on("click", $("#delete"), function () {
+		console.log("clicked");
 	});
 });
