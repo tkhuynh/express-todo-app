@@ -7,7 +7,7 @@ var app = express();
 
 app.set("view engine", "hbs");
 
-app.use(express.static("public"));
+app.use(express.static("public")); // app.use(express.static(__dirname + "/public"));
 
 //set up body-parser
 app.use(bodyParser.urlencoded({
@@ -18,21 +18,6 @@ mongoose.connect('mongodb://localhost/todo-app');
 
 var Todo = require("./models/todo"); //it's ok without .js
 
-//seed data
-
-var todos = [{
-	_id: 1,
-	task: "Go to the bank",
-	description: "Withdraw some cash for personal use"
-}, {
-	_id: 2,
-	task: "Go the supermarket",
-	description: "Buy some fish and milk"
-}, {
-	_id: 3,
-	task: "Lunch at noon",
-	description: "See Jane at Totomi's restaurant"
-}];
 
 //setup routes
 

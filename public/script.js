@@ -69,9 +69,13 @@ $(function() {
 	});
 	$("#todos-list").on("change", ".check", function (event) {
 		var ID = $(this).attr("id").slice(7);
-		var doneTodo = "#row" + ID + " h4," + "#row" + ID + " .task";
+		var doneTodo = "#row" + ID + " h4," + "#row" + ID + " .task-name";
+		var done = allTodos.filter(function(todo) {
+			return todo._id == ID;
+		})[0]; 
 		var editButton = "#row" + ID + " .edit-button";
 		$(doneTodo).toggleClass("done");
 		$(editButton).toggleClass("disabled");
+		console.log(done);
 	});
 });
