@@ -21,7 +21,7 @@ $(function() {
 		if (allTodos.length > 0) {
 			newTodo._id = allTodos[allTodos.length - 1]._id + 1;
 		}
-		document.getElementById("create-todos").reset();
+		$("#create-todos").find("input[name='task'], textarea").val("");
 		$.post(baseUrl, newTodo, function(data) {
 			allTodos.push(data);
 			render();
@@ -30,6 +30,7 @@ $(function() {
 
 	$("#todos-list").on("click", ".edit-button", function() {
 		var ID = $(this).attr("id");
+		console.log(ID);
 		var todoToBeEdited = allTodos.filter(function(todo) {
 			return todo._id == ID;
 		})[0];
@@ -39,7 +40,9 @@ $(function() {
 		$("#todos-list").on("submit", $editForm, function(event) {
 			event.preventDefault();
 			var editedTodo = $editForm.serialize();
-			document.getElementById("form" + ID).reset();
+			console.log(editedTodo);
+			//http://www.w3schools.com/jquery/traversing_find.asp find child element(s)
+			$("#form" + ID).find("input[name='task'], textarea").val("");
 			$.ajax({
 				type: "PUT",
 				url: baseUrl + "/" + ID,
@@ -52,7 +55,21 @@ $(function() {
 		});
 	});
 
-	$("#todos-list").on("click", $("#delete"), function () {
-		console.log("clicked");
+	$("#todos-list").on("click", ".delete-button", function () {
+		//if was del{{_id}} >> need to remove first 3 letters
+		var ID = $(this).attr("id").slice(3); 
+		var todoToBeDeleted = allTodos.filter(function(todo) {
+			return todo._id == ID;
+		})[0];
+		var todoToBeDeletedIndex = allTodos.indexOf(todoToBeDeleted);
+		$.ajax({
+			type: "DELETE",
+			url: baseUrl + "/" + ID,
+			data: todoToBeDeleted,
+			success: function (data) {
+				allTodos.splice(todoToBeDeletedIndex, 1);
+				render();
+			}
+		});
 	});
 });
